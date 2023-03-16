@@ -1,5 +1,7 @@
 import { rgb } from 'color-convert';
 
+// consider reducer when using more than two pieces of state
+
 export type UpdateHexColorAction = {
   type: 'update-hex-color';
   payload: {
@@ -14,6 +16,7 @@ type updateRGBColorAction = {
 
 type ColorState = {
   hexColor: string;
+  //could add further values here
 };
 
 export type AdjustColorActions = UpdateHexColorAction | updateRGBColorAction;
@@ -33,7 +36,7 @@ export const colorReducer = (
 
   if (action.type === 'update-rgb-color') {
     const hexColor = '#' + rgb.hex(action.payload.rgb);
-    return { ...state, hexColor };
+    return { ...state, hexColor }; // could add say rgb here
   }
 
   return state;
